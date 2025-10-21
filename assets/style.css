@@ -1,0 +1,172 @@
+body,
+div,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+pre,
+form,
+fieldset,
+input,
+textarea,
+p,
+blockquote,
+th,
+td {
+    margin: 0;
+    padding: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+address,
+caption,
+cite,
+code,
+dfn,
+em,
+strong,
+th,
+var {
+    font-style: normal;
+    font-weight: normal;
+}
+
+caption,
+th {
+    text-align: left;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+    font-weight: normal;
+}
+
+q:before,
+q:after {
+    content: "";
+}
+
+abbr,
+acronym {
+    border: 0;
+}
+
+body {
+    background: #fff;
+    margin: 0;
+    font-family: "Zalando Sans";
+}
+
+/* optional Container STYLES */
+.chart {
+    height: calc(100vh - 35px);
+    width: 100vw;
+    margin: 0px;
+    transition: zoom 1s;
+}
+
+.Treant > .node {
+    padding: 0px;
+    border: 0px solid #484848;
+    border-radius: 1px;
+}
+
+.Treant > .node img {
+    width: 100%;
+    height: 100%;
+    border-radius: 1px;
+    border: 1px solid gray;
+}
+
+.Treant .collapse-switch {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.Treant .node.collapsed {
+    background-color: #def82d;
+}
+
+.Treant .node.collapsed .collapse-switch {
+    background: none;
+}
+
+#info {
+    width: 100%;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    background-color: #f1fdef;
+}
+
+#loader {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    left: calc(50% - 24px);
+    top: calc(50% - 24px);
+}
+
+#loading-info {
+    position: absolute;
+    /* left: calc(50%); */
+    transform: translate(-50%);
+    left: calc(50% + 5px);
+    top: calc(50% + 40px);
+    text-align: center;
+}
+
+#project-preview {
+    position: absolute;
+    left: calc(100% - 206px);
+    width: 206px;
+    height: 180px;
+}
+
+#preview-remixes::after {
+    content: url("./assets/remix.svg");
+    filter: invert(40%) sepia(25%) saturate(938%) hue-rotate(83deg) brightness(95%) contrast(93%);
+    width: 15px;
+    height: 15px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: -12px;
+    margin-left: -3;
+}
+
+#preview-img {
+    border: 2px solid gray;
+    border-radius: 5px;
+}
+
+#title {
+    margin-left: 10px;
+}
+
+#buttons {
+    margin-right: 10px;
+    margin-left: auto;
+}

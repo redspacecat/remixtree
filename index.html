@@ -1,0 +1,181 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remix Tree</title>
+</head>
+
+<body>
+    <form onsubmit="handleSubmit(event)" action="">
+        <input type="text" placeholder='Enter a project id' pattern="^[0-9]*$" onkeypress="validate(event)"
+            id="idPicker">
+        <input type="submit" value="Create Remix Tree" style="padding: 0px 2px;">
+    </form>
+    <script>
+        function validate(evt) {
+            var theEvent = evt || window.event;
+            if (evt.key == "Enter") return
+
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            var regex = /[0-9]|\./;
+            if (!regex.test(key)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+
+        function handleSubmit(evt) {
+            evt.preventDefault()
+            if (!document.querySelector("#idPicker").value) return
+            location.href = `/${location.origin}/remixtree.html#${document.querySelector("#idPicker").value}`
+        }
+    </script>
+</body>
+
+</html> -->
+
+<!-- Quickly improved the page with Gemini, the original code is above-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remix Tree Generator</title>
+    <style>
+        /* A simple reset and basic styling */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f7f7f7; /* Light gray background */
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        /* Container for the main content */
+        .container {
+            max-width: 400px;
+            text-align: center;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.8em;
+        }
+
+        p.description {
+            color: #7f8c8d;
+            margin-bottom: 25px;
+            font-size: 0.9em;
+        }
+
+        /* Form styling */
+        form {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+        }
+
+        input[type="text"] {
+            padding: 10px 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            flex-grow: 1; /* Makes the input take up most of the space */
+            font-size: 1em;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #3498db;
+        }
+
+        input[type="submit"] {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #3498db; /* A nice blue color */
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            font-size: 1em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Remix Tree 🌳</h1>
+        <p class="description">Enter a project ID to visualize its remix tree.</p>
+        
+        <form onsubmit="handleSubmit(event)" action="">
+            <input type="text" placeholder='Enter a project ID' pattern="^[0-9]*$" onkeypress="validate(event)" id="idPicker">
+            <input type="submit" value="View Tree">
+        </form>
+    </div>
+
+    <script>
+        function validate(evt) {
+            var theEvent = evt || window.event;
+            
+            // Allow 'Enter' key, but don't process it as a keypress for validation
+            if (evt.key == "Enter") return;
+
+            // Handle paste
+            if (theEvent.type === 'paste') {
+                // Gets the clipboard data
+                var key = event.clipboardData.getData('text/plain');
+            } else {
+                // Handle key press
+                var key = theEvent.keyCode || theEvent.which;
+                key = String.fromCharCode(key);
+            }
+            
+            // Simple regex to check for digits
+            var regex = /[0-9]|\./; 
+            if (!regex.test(key)) {
+                theEvent.returnValue = false;
+                if (theEvent.preventDefault) theEvent.preventDefault();
+            }
+        }
+
+        function handleSubmit(evt) {
+            // Stop the form from doing a standard submit and reloading the page
+            evt.preventDefault(); 
+            
+            const projectId = document.querySelector("#idPicker").value;
+            
+            // Only proceed if there is an ID
+            if (!projectId) return;
+
+            // Redirect using the hash to pass the ID
+            location.href = `${location.origin}/remixtree#${projectId}`;
+        }
+    </script>
+</body>
+
+</html>
