@@ -31,7 +31,7 @@ function validate(evt) {
 
     // Handle paste
     if (theEvent.type === "paste") {
-        key = event.clipboardData.getData("text/plain");
+        key = evt.clipboardData.getData("text/plain");
     } else {
         // Handle key press
         var key = theEvent.keyCode || theEvent.which;
@@ -70,7 +70,7 @@ function consolidateData(scratchTree, level = 0) {
 }
 
 function checkLoad() {
-    if (document.querySelector("i")) {
+    if (document.querySelector(".Treant-loaded")) {
         // setTimeout(function() {
         const chart = document.querySelector(".chart");
         // chart.style.width = "100%"
@@ -176,6 +176,7 @@ function hideProjectInfo() {
         await fetch(`https://renderapi.quuq.dev/remixtree/${id}?offset=${offset}`, {
             headers: getNew ? { "X-RefreshTree": "true" } : undefined,
             cache: getNew ? "reload" : undefined,
+            signal: AbortSignal.timeout(999999999)
         })
     ).json();
     clearTimeout(noticeTimer);
