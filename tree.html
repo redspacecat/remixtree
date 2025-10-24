@@ -7,18 +7,18 @@
     <title>Remix Tree</title>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/treant-js@1.0.1/Treant.js"></script>
-    <script src="./assets/raphael.js"></script>
+    <script src="/assets/libraries/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/treant-js@1.0.1/Treant.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="/assets/style.css">
 </head>
 
 <body>
     <div id="loading-container">
-        <img src="https://cdn.scratch.mit.edu/scratchr2/static/images/ajax_loader_blue_48.gif" id="loader">
+        <img src="/assets/images/ajax_loader_blue_48.gif" id="loader">
         <div id="loading-info">Loading...</div>
     </div>
     <div id="info">
@@ -26,9 +26,16 @@
             <span>Showing remix tree for </span>
             <a target="_blank" id="title-link">...</a>
 
-            <img src="./assets/refresh.png" style="margin-left: 5px;width: 30px;height: 30px;vertical-align: middle;margin-top: 5px;" title="Regenerate remix tree (might take a while)" onclick="refresh()">
+            <img src="/assets/images/refresh.png"
+                style="margin-left: 5px;width: 30px;height: 30px;vertical-align: middle;margin-top: 5px;"
+                title="Regenerate remix tree (might take a while)" onclick="refresh()">
         </span>
         <form style="display: inline;margin: 0 auto;" onsubmit="handleSubmit(event)" action="">
+            <select onchange="switchViewer(this.value)">
+                <option disabled>Choose a Viewer</option>
+                <option value="scratch">Scratch</option>
+                <option value="treant">Treant.js (custom)</option>
+            </select>
             <input type="text" placeholder='Enter a project id' pattern="^[0-9]*$" onkeypress="validate(event)"
                 id="idPicker">
             <input type="submit" value="Go" style="padding: 0px 2px;">
@@ -48,8 +55,26 @@
         <span id="preview-views"></span>
         <span id="preview-remixes"></span>
     </div>
-    <div class="chart" id="remixtree"></div>
-    <script src="./assets/main.js"></script>
+    <div class="chart" id="treant-remixtree" hidden></div>
+    <div id="container" style="display: none;">
+        <div id="tree-container">
+            <div id="tree"></div>
+            <div id="zoomContainer" hidden>
+                <div id="zoomIn" class="zoom" onclick="App.wrapper.zoomIn()">
+                    <img src="/assets/images/zoomin.png">
+                </div>
+                <div id="zoomEqual" class="zoom" onclick="App.wrapper.zoomEqual()">
+                    <img src="/assets/images/zoomeq.png">
+                </div>
+                <div id="zoomOut" class="zoom" onclick="App.wrapper.zoomOut()">
+                    <img src="/assets/images/zoomout.png">
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+    <script src="/assets/main.js"></script>
 </body>
 
 </html>

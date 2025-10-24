@@ -170,3 +170,42 @@ body {
     margin-right: 10px;
     margin-left: auto;
 }
+
+#zoomContainer {
+    width: 77px;
+    height: 21px;
+    position: absolute;
+    top: 5px;
+    overflow: hidden;
+    /* left: 23px; */
+    float: right;
+    /* display: flex; */
+    transform-origin: top left;
+}
+
+#tree {
+    height: 500px;
+    width: 940px;
+    overflow: hidden;
+}
+
+.zoom {
+    cursor: pointer;
+    float: right;
+}
+
+.zoom:hover {
+    margin-top: -21px;
+}
+
+#container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 35px);
+    transition: background-color 0.5s;
+}
+
+#tree-container {
+    position: relative;
+}
