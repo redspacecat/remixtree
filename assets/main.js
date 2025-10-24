@@ -1,6 +1,8 @@
 window.onhashchange = () => location.reload();
 window.onerror = function (msg, url, line, col, error) {
-    alert("Error: " + msg);
+    if (!msg.includes("projectbox")) {
+        alert("Error: " + msg);
+    }
 };
 
 window.onresize = () => handleResize();
@@ -37,8 +39,8 @@ function handleResize() {
         const scale = Math.min(scaleWidth, scaleHeight);
         treeEl.style.scale = scale;
 
-        const zoomEl = document.querySelector("#zoomContainer")
-        zoomEl.style.scale = 1 / scale
+        const zoomEl = document.querySelector("#zoomContainer");
+        zoomEl.style.scale = 1 / scale;
         // zoomEl.style.top = `calc(5px * ${scale})`
     }
 }
@@ -47,7 +49,7 @@ function handleSubmit(evt) {
     evt.preventDefault();
     if (!document.querySelector("#idPicker").value) return;
     const params = new URLSearchParams(location.search);
-    let paramsString = `?viewer=${params.get("viewer") || "scratch"}`
+    let paramsString = `?viewer=${params.get("viewer") || "scratch"}`;
     window.history.replaceState({}, "", `${location.origin}${location.pathname}${paramsString}${location.hash}`);
     location.hash = `#${document.querySelector("#idPicker").value}`;
 }
@@ -293,8 +295,8 @@ function convertDataForScratch(data, newData, parentId) {
         handleResize();
         setTimeout(() => {
             document.querySelector("#container").style.backgroundColor = "#92b5ca";
-            document.querySelector("#zoomContainer").hidden = false
-        }, 0)
+            document.querySelector("#zoomContainer").hidden = false;
+        }, 0);
     }
 })();
 
@@ -325,7 +327,6 @@ async function treeScratch(data) {
     OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
     SOFTWARE.
     */
-
 
     // if (treeURL) {
     //     URL.revokeObjectURL(treeURL);
