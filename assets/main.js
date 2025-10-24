@@ -1,6 +1,6 @@
 window.onhashchange = () => location.reload();
 window.onerror = function (msg, url, line, col, error) {
-    if (!msg.includes("projectbox")) {
+    if (!msg.includes("projectbox") && !msg.includes("App")) {
         alert("Error: " + msg);
     }
 };
