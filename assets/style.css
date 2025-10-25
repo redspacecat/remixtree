@@ -147,7 +147,7 @@ body {
 }
 
 #preview-remixes::after {
-    content: url("/assets/remix.svg");
+    content: url("/assets/images/remix.svg");
     filter: invert(40%) sepia(25%) saturate(938%) hue-rotate(83deg) brightness(95%) contrast(93%);
     width: 15px;
     height: 15px;
